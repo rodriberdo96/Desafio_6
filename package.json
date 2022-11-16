@@ -1,0 +1,21 @@
+{
+  "name": "desafio-6",
+  "version": "1.0.0",
+  "description": "desafio websocket",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "websocket",
+    "express"
+  ],
+  "author": "Rodrigo Berdomas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "socket.io": "^4.5.3"
+  }
+}

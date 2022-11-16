@@ -1,0 +1,23 @@
+<div class="row bootstrap snippets">
+    <div class="box box-primary direct-chat direct-chat-primary" >
+        <div class="box-header with-border">
+            <h3 class="box-title" id="title-chat">Chat</h3>
+        </div>
+        <div class="box-body">
+            <div class="direct-chat-messages">
+            <div id="messages"></div> 
+        </div>
+        <div class="box-footer">
+            <form id="formChat" class=" row g-3" onsubmit="return addMessage(this);">
+                <div class="col">
+                    <input type="email" id="email" placeholder="Ingrese su e-mail" class="form-control input-email" required />
+                </div>
+                <div class="col ">
+                    <input type="text" id="textoMensaje" placeholder="Ingrese su mensaje..." class="form-control input-textoMensaje">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-dark">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
