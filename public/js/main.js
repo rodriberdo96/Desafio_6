@@ -24,7 +24,7 @@ document.getElementById('btnEnviar').addEventListener('click', () => {
     const nuevoProducto = {
         title: document.getElementById('title').value,
         price: document.getElementById('price').value,
-        url: document.getElementById('url').value
+        url: document.getElementById('thumbnail').value
     }
 socket.emit("guardarNuevoProducto",nuevoProducto)
 })
