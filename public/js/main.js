@@ -1,8 +1,6 @@
 const socket = io.connect();
 
-socket.on ('productos', (loadProds) => {
-    loadProds = JSON.parse(listaProductos)
-})
+
 
 async function loadProds(listaProductos) {
     let htmlProd = ''
@@ -17,6 +15,10 @@ async function loadProds(listaProductos) {
     document.getElementById('tabla').innerHTML = htmlProd; 
 }
 
+socket.on ('productos', (loadProds) => {
+    loadProds = JSON.parse(listaProductos)
+    renderProducts(loadProds)
+})
 
 document.getElementById('btnEnviar').addEventListener('click', () => {
     const nuevoProducto = {
