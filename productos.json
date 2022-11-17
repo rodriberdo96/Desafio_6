@@ -26,5 +26,11 @@
     "title": "adsf",
     "price": "1200",
     "id": 5
+  },
+  {
+    "title": "adsf",
+    "price": "1200",
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_991736-MLA41292709827_032020-F.webp",
+    "id": 6
   }
 ]
