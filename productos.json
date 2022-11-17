@@ -18,43 +18,13 @@
     "id": 3
   },
   {
-    "title": {
-      "title": "ASD",
-      "price": "1200",
-      "thumbnail": ""
-    },
+    "title": "adsf",
+    "price": "1200",
     "id": 4
   },
   {
-    "title": {
-      "title": "ASD",
-      "price": "1200",
-      "thumbnail": ""
-    },
+    "title": "adsf",
+    "price": "1200",
     "id": 5
-  },
-  {
-    "title": {
-      "title": "ASD",
-      "price": "1200",
-      "thumbnail": ""
-    },
-    "id": 6
-  },
-  {
-    "title": {
-      "title": "ASD",
-      "price": "1200",
-      "thumbnail": ""
-    },
-    "id": 7
-  },
-  {
-    "title": {
-      "title": "ASD",
-      "price": "1200",
-      "thumbnail": ""
-    },
-    "id": 8
   }
 ]

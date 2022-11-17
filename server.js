@@ -21,23 +21,27 @@ const productos = new Contenedor('productos.json')
 app.set ('view engine', 'ejs')
 app.set('views', './public/views')
 
-const messages= [];
+const messages= [
+    { nombre: "juan", mensaje: "Hola, qué tal?" },
+    { nombre: "pedro", mensaje: "¿Bien bien y tú?" },
+    { nombre: "ana", mensaje: "Genial!"}
+];
 
 // Socket
 
-io.on('connection', async socket => {
+io.on('connection',  socket => {
     console.log('Nuevo cliente conectado!')
     //productos
     io.sockets.emit('productos', productos.getAll())
-    socket.on('update',  (nuevoProducto) => {
+    socket.on('guardarNuevoProducto',  (nuevoProducto) => {
         productos.save(nuevoProducto)
-        io.sockets.emit('productos', productos.getAll())
+        io.sockets.emit('productos', productos.getAll)
     })
 
     //mensajes
     socket.emit('messages', messages)
-    socket.on('new-message', (nuevoMensaje) => {
-        messages.push(nuevoMensaje)
+    socket.on('new-message', (data) => {
+        messages.push(data)
         io.sockets.emit('messages', messages)
     })
 })
@@ -55,19 +59,18 @@ app.get('/productosC.ejs',  (req,res) => {
 })
 
 app.post ('/productos', async (req,res) => {
-    const {title,price,thumbnail} = req.body
-    const producto = {title,price,thumbnail}
+    const data= req.body
+    const producto=data 
     const id = await productos.save(producto)
     res.render('pages/index', {productos})
 })
 
 app.post('productosC.ejs', async (req,res) => {
-    const {title,price,thumbnail} = req.body
-    const producto = {title,price,thumbnail}
+    const data= req.body
+    const producto=data 
     const id = await productos.save(producto)
     res.redirect('/productosC.ejs')
 })
-
 
 
 

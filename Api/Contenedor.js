@@ -26,27 +26,27 @@ class Contenedor {
             console.log(error)
         }
     }
-    async save( title,price, thumbnail) {
-            const productos = await this.getAll()
-            let newId;
-            if(productos.length == 0){
-                newId = 1;
-            }else {
-                newId = productos[productos.length - 1].id + 1;
-            }
-            const newObj = {
-                title: title,
-                price: price,
-                thumbnail: thumbnail,
-                id: newId}
-            productos.push(newObj);
-            try {
-                await fs.writeFile(`./${this.route}`,JSON.stringify(productos, null, 2))
-                return (newObj)
-            } catch (error) {
-                return(error)
-            }
-    }
+    async save(data) {
+        const productos = await this.getAll()
+        let newId;
+        if(productos.length == 0){
+            newId = 1;
+        }else {
+            newId = productos[productos.length - 1].id + 1;
+        }
+        const newObj = {
+            title: data.title,
+            price: data.price,
+            thumbnail: data.thumbnail,
+            id: newId}
+        productos.push(newObj);
+        try {
+            await fs.writeFile(`./${this.route}`,JSON.stringify(productos, null, 2))
+            return (newObj)
+        } catch (error) {
+            return(error)
+        }
+}
     async getById(id){
         try {
             const content = JSON.parse(await fs.readFile(`./${this.route}`,'utf-8'))

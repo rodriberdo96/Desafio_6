@@ -27,6 +27,7 @@ document.getElementById('btnEnviar').addEventListener('click', () => {
         url: document.getElementById('thumbnail').value
     }
 socket.emit("guardarNuevoProducto",nuevoProducto)
+    return false;
 })
 
 
@@ -50,35 +51,33 @@ socket.on("productos", (productos) => {
 });
 
 
+
 function addMessage() {
-    const email = document.getElementById("email").value;
-    const mensaje = document.getElementById("textoMensaje").value;
-    const nuevoMensaje = { 
-        email: email,
-        mensaje: mensaje
-    };
-    socket.emit('new-message', nuevoMensaje);
-    return false;
+  const email = document.getElementById('email').value;
+  const mensaje = document.getElementById('textoMensaje').value;
+
+  const nuevoMensaje = {
+    email: email,
+    mensaje: mensaje
+  };
+
+  socket.emit('new-message', nuevoMensaje);
+  return false;
 }
-
-
-
 
 function render(data) {
     const html = data.map((elem, index) => {
         return (`
             <div>
-                <strong>${elem.nombre}</strong>:
+                <strong>${elem.email}</strong>:
                 <em>${elem.mensaje}</em>
             </div>
         `);
     }).join(' ');
     document.getElementById('messages').innerHTML = html;
-    }
-
+}
 
 socket.on('mensajes', function(data) {
     render(data);
-})
-
+});
 
