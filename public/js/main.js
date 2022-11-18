@@ -1,3 +1,5 @@
+const e = require("express");
+
 const socket = io.connect();
 
 
@@ -53,7 +55,8 @@ socket.on("productos", (productos) => {
 const form = document.getElementById('formChat');
 const input = document.getElementById('input');
 
-form.addEventListener('submit', addMessage);
+form.addEventListener('submit', addMessage(e))
+
 socket.on('messages', (data) => {
     const html = data.map((elem, index) => {
         return (`
@@ -65,8 +68,8 @@ socket.on('messages', (data) => {
     }).join(' ');
     document.getElementById('messages').innerHTML = html;
     render(data);
-
 });
+
 
 function addMessage() {
     const email = document.getElementById('email').value;
