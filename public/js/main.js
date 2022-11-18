@@ -50,39 +50,39 @@ socket.on("productos", (productos) => {
     renderProducts(productos);
 });
 
+const form = document.getElementById('formChat');
+const input = document.getElementById('input');
 
-
-function addMessage() {
-  const email = document.getElementById('email').value;
-  const mensaje = document.getElementById('textoMensaje').value;
-
-  const nuevoMensaje = {
-    email: email,
-    mensaje: mensaje,
-    date: getNow()
-  };
-
-  socket.emit('new-message', nuevoMensaje);
-  return false;
-}
-
-function render(data) {
+form.addEventListener('submit', addMessage);
+socket.on('messages', (data) => {
     const html = data.map((elem, index) => {
         return (`
             <div>
-                <strong>${elem.email}</strong>:
+                <strong>${elem.email} ${elem.date}</strong>:
                 <em>${elem.mensaje}</em>
             </div>
         `);
     }).join(' ');
     document.getElementById('messages').innerHTML = html;
+    render(data);
+
+});
+
+function addMessage() {
+    const email = document.getElementById('email').value;
+    const mensaje = document.getElementById('textoMensaje').value;
+    const nuevoMensaje = {
+        email: email,
+        mensaje: mensaje,
+        date: getNow()
+    };
+
+    socket.emit('new-message', nuevoMensaje);
+    return false;
 }
 
-socket.on('mensajes', function(data) {
-    render(data);
-});
 
 getNow = () => {
     const now = new Date();
-    return `${now.getHours()}:${now.getMinutes()}`;
+    return `${now.getDate()}/${now.getMonth()}/${now.getFullYear()},${now.getHours()}:${now.getMinutes()}`;
 }
