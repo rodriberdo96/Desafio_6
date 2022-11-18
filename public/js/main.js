@@ -58,7 +58,8 @@ function addMessage() {
 
   const nuevoMensaje = {
     email: email,
-    mensaje: mensaje
+    mensaje: mensaje,
+    date: getNow()
   };
 
   socket.emit('new-message', nuevoMensaje);
@@ -81,3 +82,7 @@ socket.on('mensajes', function(data) {
     render(data);
 });
 
+getNow = () => {
+    const now = new Date();
+    return `${now.getHours()}:${now.getMinutes()}`;
+}

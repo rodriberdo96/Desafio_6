@@ -58,6 +58,7 @@ app.get('/productosC.ejs',  (req,res) => {
 
 })
 
+
 app.post ('/productos', async (req,res) => {
     const data= req.body
     const producto=data 

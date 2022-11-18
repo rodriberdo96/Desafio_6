@@ -8,16 +8,17 @@
             <div id="messages"></div> 
         </div>
         <div class="box-footer">
-            <form id="formChat" class=" row g-3" onsubmit="return addMessage(this);">
+            <form id="formChat" class=" row g-3" onsubmit="return addMessage(this)">
                 <div class="col">
-                    <input type="email" id="email" placeholder="Ingrese su e-mail" class="form-control input-email" required />
+                    <input type="email" id="email" placeholder="Ingrese su e-mail" class="form-control input-email" >
                 </div>
                 <div class="col ">
                     <input type="text" id="textoMensaje" placeholder="Ingrese su mensaje..." class="form-control input-textoMensaje">
                 </div>
                 <div class="col">
-                    <button type="submit" class="btn btn-outline-dark" id="chatEnviar">Enviar</button>
+                    <button type="submit" class="btn btn-outline-dark" id="chatEnviar" onsubmit="return addMessage(this)">Enviar</button>
+                    </div>
             </form>
         </div>
     </div>
-</div><script src="/public/js/main.js"></script>
+</div>
