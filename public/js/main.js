@@ -1,4 +1,3 @@
-const e = require("express");
 
 const socket = io.connect();
 
@@ -17,7 +16,7 @@ async function loadProds(listaProductos) {
     document.getElementById('tabla').innerHTML = htmlProd; 
 }
 
-socket.on ('productos', (loadProds) => {
+socket.on ('productos', loadProds => {
     loadProds = JSON.parse(listaProductos)
     renderProducts(loadProds)
 })
@@ -29,7 +28,6 @@ document.getElementById('btnEnviar').addEventListener('click', () => {
         url: document.getElementById('thumbnail').value
     }
 socket.emit("guardarNuevoProducto",nuevoProducto)
-    return false;
 })
 
 
@@ -43,7 +41,7 @@ function renderProducts(productos) {
             </tr>
         `);
     }).join(" ");
-    document.getElementById('productos').innerHTML = html;
+    document.getElementById('tabla').innerHTML = html;
 
 }
 
@@ -55,7 +53,6 @@ socket.on("productos", (productos) => {
 const form = document.getElementById('formChat');
 const input = document.getElementById('input');
 
-form.addEventListener('submit', addMessage(e))
 
 socket.on('messages', (data) => {
     const html = data.map((elem, index) => {

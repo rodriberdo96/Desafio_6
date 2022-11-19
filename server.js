@@ -21,11 +21,7 @@ const productos = new Contenedor('productos.json')
 app.set ('view engine', 'ejs')
 app.set('views', './public/views')
 
-const messages= [
-    { nombre: "juan", mensaje: "Hola, qué tal?" },
-    { nombre: "pedro", mensaje: "¿Bien bien y tú?" },
-    { nombre: "ana", mensaje: "Genial!"}
-];
+const messages= [];
 
 // Socket
 
