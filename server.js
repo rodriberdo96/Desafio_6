@@ -44,7 +44,9 @@ io.on('connection',  socket => {
 
 //rutas
 app.get('/', (req,res) => {
+    productos.getAll().then((productos) => {
     res.render('pages/index', {productos})
+    })
 })
 
 app.get('/productosC.ejs',  (req,res) => {
@@ -62,11 +64,11 @@ app.post ('/productos', async (req,res) => {
     res.render('pages/index', {productos})
 })
 
-app.post('productosC.ejs', async (req,res) => {
+app.post('index', async (req,res) => {
     const data= req.body
     const producto=data 
     const id = await productos.save(producto)
-    res.redirect('/productosC.ejs')
+    res.render('/index', {productos})
 })
 
 

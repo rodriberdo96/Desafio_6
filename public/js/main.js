@@ -64,7 +64,6 @@ socket.on('messages', (data) => {
         `);
     }).join(' ');
     document.getElementById('messages').innerHTML = html;
-    render(data);
 });
 
 
